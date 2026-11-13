@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="es" class="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Taller Integral Claudio (S-D) | Ficha Digital & QR</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- QRCode.js CDN -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        taller: {
+                            dark: '#0b0f17',
+                            panel: '#111827',
+                            card: '#1f2937',
+                            input: '#0f172a',
+                            border: '#374151',
+                            red: '#dc2626',
+                            orange: '#ea580c'
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #0b0f17;
+            color: #f3f4f6;
+        }
+        @media print {
+            body * { visibility: hidden; }
+            #printableStickerArea, #printableStickerArea * { visibility: visible; }
+            #printableStickerArea {
+                position: fixed;
+                left: 50%;
+                top: 20mm;
+                transform: translateX(-50%);
+                width: 85mm;
+                border: 2px solid #000 !important;
+                background: #fff !important;
+                color: #000 !important;
+                padding: 12px !important;
+                box-shadow: none !important;
+            }
+            .no-print { display: none !important; }
+        }
+        .carbon-pattern {
+            background-color: #111827;
+            background-image: radial-gradient(#1f2937 1px, transparent 1px);
+            background-size: 14px 14px;
+        }
+    </style>
+</head>
+<body class="min-h-screen flex flex-col selection:bg-taller-red selection:text-white">
+
+    <!-- TOAST NOTIFICACIÓN -->
+    <div id="toastNotification" class="fixed bottom-5 right-5 z-[100] transform translate-y-24 opacity-0 transition-all duration-300 pointer-events-none">
+        <div class="bg-gray-900 border-l-4 border-taller-red text-white px-4 py-3 rounded-xl shadow-2xl flex items-center gap-3 text-sm font-semibold">
+            <i id="toastIcon" class="fa-solid fa-circle-check text-emerald-400 text-lg"></i>
+            <span id="toastMessage">Operación exitosa</span>
+        </div>
+    </div>
+
+    <!-- VISTA 1: PANEL DEL TALLER -->
+    <div id="workshopView" class="flex-1 flex flex-col hidden">
+        <header class="bg-taller-panel border-b border-taller-border sticky top-0 z-30 shadow-xl">
+            <div class="max-w-7xl mx-auto px-4 py-3 flex flex-wrap items-center justify-between gap-3">
+                <div class="flex items-center gap-3">
+                    <div class="bg-black px-3 py-1.5 rounded-xl border border-gray-700 flex items-center justify-center shadow-inner h-12">
+                        <svg viewBox="0 0 500 120" class="h-8 w-auto">
+                            <path d="M 20 80 L 70 80 Q 90 80 100 65 L 140 25 Q 165 15 220 15 L 280 15 Q 330 15 365 35 L 450 65 Q 470 70 480 80 L 480 90 L 320 90 Q 300 90 280 90 L 170 90 Q 150 90 130 90 L 20 90 Z" 
+                                  fill="none" stroke="#cbd5e1" stroke-width="9" stroke-linecap="round" stroke-linejoin="round"/>
+                            <path d="M 445 40 L 415 32 L 340 32 L 350 40 Z" fill="#cbd5e1"/>
+                            <text x="210" y="82" fill="#dc2626" font-family="Arial, sans-serif" font-size="38" font-weight="900" letter-spacing="2">S-D</text>
+                        </svg>
+                    </div>
+                    <div>
+                        <h1 class="font-black text-base sm:text-xl text-white tracking-wide">
+                            TALLER INTEGRAL <span class="text-taller-red">CLAUDIO (S-D)</span>
+                        </h1>
+                        <p class="text-xs text-gray-400">La Rioja 329, Morón • 📱 15 5962-2862</p>
+                    </div>
+                </div>
+
+                <div class="flex items-center gap-2">
+                    <button onclick="openConfigModal()" class="bg-gray-800 hover:bg-gray-700 text-gray-200 border border-gray-700 text-xs
+ font-bold px-3 py-2.5 rounded-xl transition-all flex items-center gap-1.5" title="Configurar URL pública">
+cmd
